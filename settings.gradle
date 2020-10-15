@@ -1,0 +1,3 @@
+include ':external-helper'
+include ':app'
+rootProject.name = "External Helper"
