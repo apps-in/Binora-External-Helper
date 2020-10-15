@@ -46,6 +46,11 @@ public class ExternalEcgIntentBuilder {
         return this;
     }
 
+    public ExternalEcgIntentBuilder setSoundState(boolean isOn) {
+        intent.putExtra(ExternalExtras.EXTRA_SOUND_STATE, isOn);
+        return this;
+    }
+
     public ExternalEcgIntentBuilder setSoundOn() {
         intent.putExtra(ExternalExtras.EXTRA_SOUND_STATE, true);
         return this;
