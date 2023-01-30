@@ -14,8 +14,10 @@ import app.binora.external_helper.enums.EcgMode;
 import app.binora.external_helper.enums.Gender;
 import app.binora.external_helper.enums.HeightUnit;
 import app.binora.external_helper.enums.Language;
+import app.binora.external_helper.enums.PowerLineFilter;
 import app.binora.external_helper.enums.ReportGridColor;
 import app.binora.external_helper.enums.EcgTimeScale;
+import app.binora.external_helper.enums.SensorConfig;
 import app.binora.external_helper.enums.Theme;
 import app.binora.external_helper.enums.WeightUnit;
 
@@ -43,6 +45,41 @@ public class ExternalEcgIntentBuilder {
                 throw new IllegalArgumentException();
         }
         intent.putExtra(ExternalExtras.EXTRA_ECG_MODE, option);
+        return this;
+    }
+
+    public ExternalEcgIntentBuilder setSensorConfig(@NonNull SensorConfig config) {
+        String option;
+        switch (config) {
+            case WILSON:
+                option = ExternalExtras.SENSOR_CONFIG_WILSON_EXTRA_VALUE;
+                break;
+            case EASI:
+                option = ExternalExtras.SENSOR_CONFIG_EASI_EXTRA_VALUE;
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+        intent.putExtra(ExternalExtras.EXTRA_ECG_SENSOR_CONFIG, option);
+        return this;
+    }
+
+    public ExternalEcgIntentBuilder setPowerLineFilter(@NonNull PowerLineFilter filter) {
+        String option;
+        switch (filter) {
+            case NONE:
+                option = ExternalExtras.POWER_LINE_FILTER_NONE_EXTRA_VALUE;
+                break;
+            case HZ_50:
+                option = ExternalExtras.POWER_LINE_FILTER_50_HZ_EXTRA_VALUE;
+                break;
+            case HZ_60:
+                option = ExternalExtras.POWER_LINE_FILTER_60_HZ_EXTRA_VALUE;
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+        intent.putExtra(ExternalExtras.EXTRA_ECG_POWER_LINE_FILTER, option);
         return this;
     }
 
